@@ -31,7 +31,7 @@ var bio = {
   "role": "Front-End Developer",
   "welcomeMessage": "You are looking for a FE Developer? Look no further. Welcome to my online resume!",
   "biopic": "images/me.jpg",
-  "contacs": {
+  "contacts": {
     "mobile": "0049 15787521110",
     "email": "agnes@mondorf.dk",
     "github": "amondorf",
@@ -172,5 +172,4 @@ function inName() {
 }
 
 // shows a map
-map
 $("#mapDiv").append(googleMap);
