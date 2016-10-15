@@ -95,8 +95,9 @@ a {
 .welcome-message {
   font-style: italic;
   font-size: 18px;
-  color: #f3f3f3;
+  color: #484848;
   line-height: 28px;
+  display: block;
 }
 
 #skills-h3 {

@@ -32,8 +32,8 @@ var bio = {
   "welcomeMessage": "You are looking for a FE Developer? Look no further. Welcome to my online resume!",
   "biopic": "images/me.jpg",
   "contacts": {
-    "mobile": "0049 15787521110",
-    "email": "agnes@mondorf.dk",
+    "mobile": "0049 1578751111",
+    "email": "agnes@test.dk",
     "github": "amondorf",
     "location": "Hamburg, Germany"
   },
@@ -73,6 +73,16 @@ var education = {
 
 $("#header").append(HTMLheaderName.replace("%data%", bio.name))
 $("#header").append(HTMLbioPic.replace("%data%", bio.biopic))
+$("#header").append(HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage))
+$("#header").append(HTMLmobile.replace("%data%", bio.contacts["mobile"]))
+$("#header").append(HTMLemail.replace("%data%", bio.contacts["email"]))
+$("#header").append(HTMLgithub.replace("%data%", bio.contacts["github"]))
+$("#header").append(HTMLlocation.replace("%data%", bio.contacts["location"]))
+
+$("#footerContacts").append(HTMLmobile.replace("%data%", bio.contacts["mobile"]))
+$("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts["email"]))
+$("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts["github"]))
+$("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts["location"]))
 
 if (bio.skills.length > 0) {
   $("#header").append(HTMLskillsStart);
