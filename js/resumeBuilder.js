@@ -38,7 +38,7 @@ var bio = {
     "location": "Hamburg, Germany"
   },
   "skills": [
-    "humor", "talent", "taste"
+    "humor", "talent", "taste", "number-lover"
   ]
 }
 
