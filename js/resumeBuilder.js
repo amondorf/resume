@@ -17,14 +17,16 @@ var work = {
 var projects = {
     "projects": [{
         "title": "German-Spanish Tandem",
-        "date": "since 2013",
+        "dates": "since 2013",
         "description": "Learning Spanish",
         "images": "images/spanish.jpg"
     }, {
         "title": "Baking",
-        "date": "since 1999",
+        "dates": "since 1999",
         "description": "I love to bake!",
-        "images": "images/baking.jpg"
+        "images": (
+          "images/baking.jpg", "images/oven.jpg"
+        )
     }]
 };
 
@@ -49,21 +51,21 @@ var education = {
         "name": "Paderborn University",
         "location": "Paderborn, Germany",
         "degree": "B.A. International Business",
-        "dates": 2006,
+        "dates": "2006",
         "url": "https://www.uni-paderborn.de/en/universitaet/",
-        "majors": ["Dancing", "Accounting"]
+        "majors": ["Dancing", " Accounting"]
     }, {
         "name": "Maastricht University",
         "location": "Maastricht, The Netherlands",
         "degree": "M.Sc. International Business",
-        "dates": 2008,
+        "dates": "2008",
         "url": "https://www.maastrichtuniversity.nl/",
-        "majors": ["Dancing", "Accounting"]
+        "majors": ["Dancing", " Accounting"]
     }],
     "onlineCourses": [{
         "title": "Front-End Nanodegree",
         "school": "Udacity",
-        "dates": 2016,
+        "dates": "2016",
         "url": "https://www.udacity.com/"
     }]
 };
@@ -81,17 +83,17 @@ $("#footerContacts").append(HTMLemail.replace("%data%", bio.contacts["email"]));
 $("#footerContacts").append(HTMLgithub.replace("%data%", bio.contacts["github"]));
 $("#footerContacts").append(HTMLlocation.replace("%data%", bio.contacts["location"]));
 
-if (bio.skills.length > 0) {
+// shows skills
+bio.display = function() {
     $("#header").append(HTMLskillsStart);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[0]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[1]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
-    $("#skills").append(formattedSkill);
-    var formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
-    $("#skills").append(formattedSkill);
+
+    for (var skill in bio.skills) {
+        var formattedSkill = HTMLskills.replace("%data%", bio.skills[skill]);
+        $("#skills").append(formattedSkill);
+    }
 };
+
+bio.display();
 
 // shows work
 work.display = function() {
@@ -130,8 +132,8 @@ education.display = function() {
         var formattedEducationDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
         $(".education-entry:last").append(formattedEducationDegree);
 
-        var formattedEducationDate = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-        $(".education-entry:last").append(formattedEducationDate);
+        var formattedEducationDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        $(".education-entry:last").append(formattedEducationDates);
 
         var formattedEducationMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
         $(".education-entry:last").append(formattedEducationMajor);
@@ -140,6 +142,29 @@ education.display = function() {
 
 education.display();
 
+// shows online courses
+// onlineCourses.display = function() {
+//     for (var onlineCourse in education.onlineCourses) {
+//         $("#education").append(HTMLonlineClasses);
+//         var formattedOnlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourse[onlineCourse].title);
+//         $(".education-entry:last").append(formattedOnlineTitle);
+
+        // var formattedEducationLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+        // $(".education-entry:last").append(formattedEducationLocation);
+        //
+        // var formattedEducationDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+        // $(".education-entry:last").append(formattedEducationDegree);
+        //
+        // var formattedEducationDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+        // $(".education-entry:last").append(formattedEducationDates);
+        //
+        // var formattedEducationMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+        // $(".education-entry:last").append(formattedEducationMajor);
+//     }
+// };
+//
+// onlineCourses.display();
+
 // shows projects
 projects.display = function() {
     for (var project in projects.projects) {
@@ -147,8 +172,8 @@ projects.display = function() {
         formattedProjectTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
         $(".project-entry:last").append(formattedProjectTitle);
 
-        formattedProjectDate = HTMLprojectDates.replace("%data%", projects.projects[project].date);
-        $(".project-entry:last").append(formattedProjectDate);
+        formattedProjectDates = HTMLprojectDates.replace("%data%", projects.projects[project].dates);
+        $(".project-entry:last").append(formattedProjectDates);
 
         formattedProjectDescription = HTMLprojectDescription.replace("%data%", projects.projects[project].description);
         $(".project-entry:last").append(formattedProjectDescription);
